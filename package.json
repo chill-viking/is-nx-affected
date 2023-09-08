@@ -1,7 +1,7 @@
 {
   "name": "is-nx-affected",
   "description": "GitHub Action to check if a package is affected by a change in a Nx monorepo",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "author": "chill-viking",
   "private": true,
   "homepage": "https://github.com/chill-viking/is-nx-affected",
@@ -17,6 +17,7 @@
     "node",
     "setup"
   ],
+  "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js"
   },
