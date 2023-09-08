@@ -1,16 +1,16 @@
 {
-  "name": "typescript-action",
-  "description": "GitHub Actions TypeScript template",
-  "version": "0.0.0",
-  "author": "",
+  "name": "is-nx-affected",
+  "description": "GitHub Action to check if a package is affected by a change in a Nx monorepo",
+  "version": "1.0.0",
+  "author": "chill-viking",
   "private": true,
-  "homepage": "https://github.com/actions/typescript-action",
+  "homepage": "https://github.com/chill-viking/is-nx-affected",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/chill-viking/is-nx-affected.git"
   },
   "bugs": {
-    "url": "https://github.com/actions/typescript-action/issues"
+    "url": "https://github.com/chill-viking/is-nx-affected/issues"
   },
   "keywords": [
     "actions",
@@ -26,8 +26,8 @@
   "scripts": {
     "bundle": "npm run format:write && npm run package",
     "ci-test": "jest",
-    "format:write": "prettier --write '**/*.ts'",
-    "format:check": "prettier --check '**/*.ts'",
+    "format:write": "prettier --write **/*.ts",
+    "format:check": "prettier --check **/*.ts",
     "lint": "npx eslint . -c ./.github/linters/.eslintrc.yml",
     "package": "ncc build src/index.ts --license licenses.txt",
     "package:watch": "npm run package -- --watch",

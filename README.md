@@ -1,202 +1,66 @@
-# Create a JavaScript Action Using TypeScript
+## chill-viking/is-nx-affected
 
-[![GitHub Super-Linter](https://github.com/actions/typescript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
-![CI](https://github.com/actions/typescript-action/actions/workflows/ci.yml/badge.svg)
+[![GitHub Super-Linter](https://github.com/chill-viking/is-nx-affected/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
+![CI](https://github.com/chill-viking/is-nx-affected/actions/workflows/ci.yml/badge.svg)
 
-Use this template to bootstrap the creation of a TypeScript action. :rocket:
+> This action is currently a work in progress, please come back soon.
 
-This template includes compilation support, tests, a validation workflow,
-publishing, and versioning guidance.
+<!--
+Ahoy, fellow Viking of Code! 🛡️
 
-If you are new, there's also a simpler introduction in the
-[Hello world JavaScript action repository](https://github.com/actions/hello-world-javascript-action).
+Introducing the `chill-viking/is-nx-affected` GitHub Action, your trusty companion on the quest to conquer Nx monorepos! 🏰
 
-## Create Your Own Action
+### What's the Scoop?
 
-To create your own action, you can use this repository as a template! Just
-follow the below instructions:
+This action is your treasure map to determine whether a specific `project` in your Nx monorepo is affected by changes in the current branch,
+compared to a chosen `base` branch or tag. And guess what?
+The default `base` is set to `'main'` because, well, it's the main course of our adventure! 🍖
 
-1. Click the **Use this template** button at the top of the repository
-1. Select **Create a new repository**
-1. Select an owner and name for your new repository
-1. Click **Create repository**
-1. Clone your new repository
+### How to Unleash the Viking Power
 
-## Initial Setup
+To summon this mighty action in your GitHub workflow, follow these steps:
 
-After you've cloned the repository to your local machine or codespace, you'll
-need to perform some initial setup steps before you can develop your action.
+**Inputs**: Craft your spell in the workflow YAML with these enchanting inputs:
 
-> [!NOTE]
->
-> You'll need to have a reasonably modern version of
-> [Node.js](https://nodejs.org) handy. If you are using a version manager like
-> [`nodenv`](https://github.com/nodenv/nodenv) or
-> [`nvm`](https://github.com/nvm-sh/nvm), you can run `nodenv install` in the
-> root of your repository to install the version specified in
-> [`package.json`](./package.json). Otherwise, 16.x or later should work!
+| Name      | Required | Description                                                      |
+|-----------|----------|------------------------------------------------------------------|
+| `project` | :check:  | The Nx project name you're targeting.                            |
+| `base`    | :x:      | The base branch or tag to compare against. Defaults to `'main'`. |
 
-1. :hammer_and_wrench: Install the dependencies
+**Outputs**: The action will cast a spell and set these outputs:
 
-   ```bash
-   npm install
-   ```
+| Name                | Description                                                              |
+|---------------------|--------------------------------------------------------------------------|
+| `is-affected`       | `'true'` if the project has been affected, `'false'` otherwise.          |
+| `affected-projects` | A comma-separated list of affected projects. Empty if none are affected. |
 
-1. :building_construction: Package the TypeScript for distribution
+ ```yaml
+ jobs:
+   build:
+   runs-on: ubuntu-latest
+   steps:
+     - name: 'Has my-nx-project been affected?'
+       uses: chill-viking/is-nx-affected@v1
+       with:
+         project: 'my-nx-project'
+         base: 'develop'
 
-   ```bash
-   npm run bundle
-   ```
+     - name: 'Release my-nx-project'
+       if: steps.is-nx-affected.outputs.is-affected == 'true' # Only run if the project has been affected
+       run: |
+         echo 'Releasing my-nx-project...'
+ ```
 
-1. :white_check_mark: Run the tests
+### License to Sail the Code Sea
 
-   ```bash
-   $ npm test
+This GitHub Action is all about freedom! It sails under the MIT License flag. Dive into the [LICENSE](LICENSE) scroll for all the nitty-gritty details.
 
-   PASS  ./index.test.js
-     ✓ throws invalid number (3ms)
-     ✓ wait 500 ms (504ms)
-     ✓ test runs (95ms)
+### Join the Viking Crew
 
-   ...
-   ```
+Contributions? Sure, why not! Although we're not actively recruiting shipmates at the moment, feel free to use this action, modify it, and maybe, just maybe, you'll become a legendary Viking coder in your own right! ⚔️
 
-## Update the Action Metadata
+-->
 
-The [`action.yml`](action.yml) file defines metadata about your action, such as
-input(s) and output(s). For details about this file, see
-[Metadata syntax for GitHub Actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions).
+### Contributors
 
-When you copy this repository, update `action.yml` with the name, description,
-inputs, and outputs for your action.
-
-## Update the Action Code
-
-The [`src/`](./src/) directory is the heart of your action! This contains the
-source code that will be run when your action is invoked. You can replace the
-contents of this directory with your own code.
-
-There are a few things to keep in mind when writing your action code:
-
-- Most GitHub Actions toolkit and CI/CD operations are processed asynchronously.
-  In `index.ts`, you will see that the action is run in an `async` function.
-
-  ```javascript
-  import * as core from '@actions/core';
-  ...
-
-  async function run() {
-    try {
-        ...
-    }
-    catch (error) {
-      core.setFailed(error.message);
-    }
-  }
-
-  run()
-  ```
-
-  For more information about the GitHub Actions toolkit, see the
-  [documentation](https://github.com/actions/toolkit/blob/master/README.md).
-
-So, what are you waiting for? Go ahead and start customizing your action!
-
-1. Create a new branch
-
-   ```bash
-   git checkout -b releases/v1
-   ```
-
-1. Replace the contents of `src/` with your action code
-1. Add tests to `__tests__/` for your source code
-1. Format, test, and build the action
-
-   ```bash
-   npm run all
-   ```
-
-   > [!WARNING]
-   >
-   > This step is important! It will run [`ncc`](https://github.com/vercel/ncc)
-   > to build the final JavaScript action code with all dependencies included.
-   > If you do not run this step, your action will not work correctly when it is
-   > used in a workflow. This step also includes the `--license` option for
-   > `ncc`, which will create a license file for all of the production node
-   > modules used in your project.
-
-1. Commit your changes
-
-   ```bash
-   git add .
-   git commit -m "My first action is ready!"
-   ```
-
-1. Push them to your repository
-
-   ```bash
-   git push -u origin releases/v1
-   ```
-
-1. Create a pull request and get feedback on your action
-1. Merge the pull request into the `main` branch
-
-Your action is now published! :rocket:
-
-For information about versioning your action, see
-[Versioning](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-in the GitHub Actions toolkit.
-
-## Validate the Action
-
-You can now validate the action by referencing it in a workflow file. For
-example, [`ci.yml`](./.github/workflows/ci.yml) demonstrates how to reference an
-action in the same repository.
-
-```yaml
-steps:
-  - name: Checkout
-    id: checkout
-    uses: actions/checkout@v3
-
-  - name: Test Local Action
-    id: test-action
-    uses: ./
-    with:
-      milliseconds: 1000
-
-  - name: Print Output
-    id: output
-    run: echo "${{ steps.test-action.outputs.time }}"
-```
-
-For example workflow runs, check out the
-[Actions tab](https://github.com/actions/typescript-action/actions)! :rocket:
-
-## Usage
-
-After testing, you can create version tag(s) that developers can use to
-reference different stable versions of your action. For more information, see
-[Versioning](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-in the GitHub Actions toolkit.
-
-To include the action in a workflow in another repository, you can use the
-`uses` syntax with the `@` symbol to reference a specific branch, tag, or commit
-hash.
-
-```yaml
-steps:
-  - name: Checkout
-    id: checkout
-    uses: actions/checkout@v3
-
-  - name: Test Local Action
-    id: test-action
-    uses: actions/typescript-action@v1 # Commit with the `v1` tag
-    with:
-      milliseconds: 1000
-
-  - name: Print Output
-    id: output
-    run: echo "${{ steps.test-action.outputs.time }}"
-```
+[![contributors](https://contrib.rocks/image?repo=chill-viking/is-nx-affected)](https://github.com/chill-viking/is-nx-affected/graphs/contributors)
