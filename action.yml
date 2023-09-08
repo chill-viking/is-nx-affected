@@ -1,18 +1,23 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
-
-# Define your inputs here.
+name: 'Check Nx Affected'
+description: 'Action to check if a nx project has been affected by changes in a branch compared to a base branch.'
+author: 'chill-viking'
+branding:
+  icon: 'help-circle'
+  color: 'grey-dark'
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  project:
+    description: 'Name of project to check'
     required: true
-    default: '1000'
+  base:
+    description: 'Base branch/tag to compare against'
+    required: false
+    default: 'origin/main'
 
-# Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  is-affected:
+    description: 'Whether the project specified is affected or not'
+  affected-projects:
+    description: 'Comma separated list of all affected projects'
 
 runs:
   using: node16
