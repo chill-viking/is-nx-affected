@@ -3,7 +3,7 @@ description: 'Action to check if a nx project has been affected by changes in a 
 author: 'chill-viking'
 branding:
   icon: 'help-circle'
-  color: 'grey-dark'
+  color: 'gray-dark'
 inputs:
   project:
     description: 'Name of project to check'
