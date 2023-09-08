@@ -53,8 +53,6 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
-        # might need to checkout another repo with nx to properly test this in future.
-
       - name: Setup Node.js
         id: setup-node
         uses: actions/setup-node@v3
@@ -80,5 +78,8 @@ jobs:
       - name: Print Output
         id: output
         run: |
-          echo "is-affected: ${{ steps.test-action.outputs.is-affected }}"
-          echo "affected-projects: ${{ steps.test-action.outputs.affected-projects }}"
+          echo "is-affected:"
+          echo "${{ steps.test-action.outputs.is-affected }}"
+          echo
+          echo "affected-projects:"
+          echo "${{ steps.test-action.outputs.affected-projects }}"

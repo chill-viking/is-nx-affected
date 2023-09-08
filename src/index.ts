@@ -14,7 +14,8 @@ export async function run(): Promise<void> {
     core.debug(`Base:    ${base}`);
 
     // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString());
+    core.setOutput('is-affected', true);
+    core.setOutput('affected-projects', 'project-1,project-2');
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) {
