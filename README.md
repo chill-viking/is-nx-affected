@@ -1,6 +1,5 @@
 ## chill-viking/is-nx-affected
 
-[![GitHub Super-Linter](https://github.com/chill-viking/is-nx-affected/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
 ![CI](https://github.com/chill-viking/is-nx-affected/actions/workflows/ci.yml/badge.svg)
 
 > This action is currently a work in progress, please come back soon.
