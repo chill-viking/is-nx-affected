@@ -19,7 +19,7 @@ export async function getAffectedNxProjects(
         return;
       }
 
-      projects.push(...stdout.split('\n'));
+      projects.push(...stdout.split('\n').filter((p) => p));
       core.info(`Found ${projects.length} affected projects`);
       resolve('Completed');
     }),

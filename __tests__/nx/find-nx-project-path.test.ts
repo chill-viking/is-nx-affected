@@ -25,7 +25,7 @@ describe('findNxProjectPath', () => {
     it('should throw error', async () => {
       findFileMock.mockReturnValue(undefined);
 
-      await expect(fut.findNxProjectPath()).rejects.toThrowError();
+      await expect(fut.findNxProjectPath()).rejects.toThrow();
     });
   });
 });
