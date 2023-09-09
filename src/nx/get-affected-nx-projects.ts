@@ -9,7 +9,7 @@ export async function getAffectedNxProjects(
     `Running command in ${path}: npx nx print-affected --base ${base} --select projects --plain`,
   );
   const command = `npx nx show projects --affected --base ${base}`;
-  let projects: string[] = [];
+  const projects: string[] = [];
   await new Promise((resolve, error) =>
     exec(command, { cwd: path }, (err, stdout, stderr) => {
       if (err) {

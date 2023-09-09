@@ -1,4 +1,4 @@
-import * as fut from "../../src/nx/find-nx-project-path";
+import * as fut from '../../src/nx/find-nx-project-path';
 
 const findNxProjectPathMock = jest.spyOn(fut, 'findNxProjectPath');
 
