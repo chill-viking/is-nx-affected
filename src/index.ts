@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+import * as nxUtils from './nx';
 
 /**
  * The main function for the action.
@@ -13,9 +14,14 @@ export async function run(): Promise<void> {
     core.debug(`Project: ${project}`);
     core.debug(`Base:    ${base}`);
 
+    // Run the command
+    const path = await nxUtils.findNxProjectPath();
+    const affectedProjects = await nxUtils.getAffectedNxProjects(path, base);
+    const isAffected = affectedProjects.includes(project);
+
     // Set outputs for other workflow steps to use
-    core.setOutput('is-affected', true);
-    core.setOutput('affected-projects', 'project-1,project-2');
+    core.setOutput('is-affected', isAffected);
+    core.setOutput('affected-projects', affectedProjects.join(','));
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) {

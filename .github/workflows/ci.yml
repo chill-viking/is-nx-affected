@@ -68,12 +68,24 @@ jobs:
         id: npm-build
         run: npm run bundle
 
+      - name: Checkout ng-libs
+        uses: actions/checkout@v4
+        with:
+          repository: 'chill-viking/ng-libs'
+          path: 'ng-libs'
+
+      - name: Install ng-libs dependencies
+        run: npm ci
+        working-directory: ng-libs
+
       - name: Test Local Action
         id: test-action
         uses: ./
         with:
           project: 'test-project'
-          base: 'base'
+          base: 'origin/main'
+        env:
+          ACTIONS_STEP_DEBUG: true
 
       - name: Print Output
         id: output
