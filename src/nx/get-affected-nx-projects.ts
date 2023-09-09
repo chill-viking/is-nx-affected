@@ -12,9 +12,9 @@ export async function getAffectedNxProjects(
     exec(command, { cwd: path }, (err, stdout, stderr) => {
       if (err || stderr) {
         error(
-          `Failed to get affected projects: ${
-            err ?? stderr
-          }. Additional info:\n${stdout}`,
+          new Error(
+            `Failed to get affected projects. Additional info:\n${stdout}`,
+          ),
         );
         return;
       }
