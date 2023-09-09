@@ -74,6 +74,8 @@ jobs:
         with:
           project: 'test-project'
           base: 'base'
+        env:
+          DEBUG: 'true'
 
       - name: Print Output
         id: output
