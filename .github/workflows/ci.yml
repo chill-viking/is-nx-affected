@@ -81,7 +81,7 @@ jobs:
           project: 'test-project'
           base: 'base'
         env:
-          DEBUG: 'true'
+          ACTIONS_STEP_DEBUG: 'true'
 
       - name: Print Output
         id: output
