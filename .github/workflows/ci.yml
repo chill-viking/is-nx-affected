@@ -68,6 +68,12 @@ jobs:
         id: npm-build
         run: npm run bundle
 
+      - name: Checkout ng-libs
+        uses: actions/checkout@v4
+        with:
+          repository: 'chill-viking/ng-libs'
+          path: 'ng-libs'
+
       - name: Test Local Action
         id: test-action
         uses: ./
