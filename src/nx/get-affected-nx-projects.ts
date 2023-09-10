@@ -10,17 +10,21 @@ export async function getAffectedNxProjects(
   const projects: string[] = [];
   await new Promise((resolve, error) =>
     exec(command, { cwd: path }, (err, stdout, stderr) => {
-      if (err || stderr) {
+      if (err || stderr?.startsWith('error') || stderr?.startsWith('fatal')) {
         error(
           new Error(
-            `Failed to get affected projects. Additional info:\n${JSON.stringify(
-              { stdout, err, stderr },
-              null,
-              2,
-            )}`,
-          ),
-        );
+            `
+Failed to get affected projects. Additional info:
+error: ${err}
+output: ${stdout}
+stderr: ${stderr}
+`,
+            ));
         return;
+      }
+
+      if (stderr?.startsWith('warning')) {
+        core.warning(stderr);
       }
 
       projects.push(...stdout.split('\n').filter((p) => p));
