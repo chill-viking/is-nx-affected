@@ -19,7 +19,8 @@ error: ${err}
 output: ${stdout}
 stderr: ${stderr}
 `,
-            ));
+          ),
+        );
         return;
       }
 
