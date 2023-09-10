@@ -15,9 +15,11 @@ export async function getAffectedNxProjects(
           new Error(
             `
 Failed to get affected projects. Additional info:
-error: ${err}
-output: ${stdout}
-stderr: ${stderr}
+${err?.message}
+${stderr ?? ''}
+
+Command output:
+${stdout}
 `,
           ),
         );
