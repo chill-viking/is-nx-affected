@@ -6,21 +6,27 @@ export async function getAffectedNxProjects(
   base: string,
 ): Promise<string[]> {
   const command = `npx -y nx show projects --affected --base ${base}`;
-  core.debug(`Running command in ${path}: ${command}`);
+  core.info(`Running command in ${path}: ${command}`);
   const projects: string[] = [];
   await new Promise((resolve, error) =>
     exec(command, { cwd: path }, (err, stdout, stderr) => {
       if (err || stderr) {
         error(
           new Error(
-            `Failed to get affected projects. Additional info:\n${stdout}`,
+            `Failed to get affected projects. Additional info:\n${JSON.stringify(
+              { stdout, err, stderr },
+              null,
+              2,
+            )}`,
           ),
         );
         return;
       }
 
       projects.push(...stdout.split('\n').filter((p) => p));
-      core.info(`Found ${projects.length} affected projects`);
+      core.info(
+        `Found ${projects.length} affected projects:\n${projects.join('\n')}\n`,
+      );
       resolve('Completed');
     }),
   );
