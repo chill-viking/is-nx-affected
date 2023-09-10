@@ -8,7 +8,7 @@ import * as nxUtils from './nx';
 export async function run(): Promise<void> {
   try {
     const project: string = core.getInput('project');
-    const base: string = core.getInput('base');
+    const base: string = core.getInput('base') ?? 'origin/main';
 
     core.startGroup('Input parameters');
     core.info(`Project: '${project}'`);
