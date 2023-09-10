@@ -15,9 +15,11 @@ export async function getAffectedNxProjects(
           new Error(
             `
 Failed to get affected projects. Additional info:
-error: ${err}
-output: ${stdout}
-stderr: ${stderr}
+${err?.message}
+${stderr ?? ''}
+
+Command output:
+${stdout}
 `,
           ),
         );
@@ -30,7 +32,7 @@ stderr: ${stderr}
 
       projects.push(...stdout.split('\n').filter((p) => p));
       core.info(
-        `Found ${projects.length} affected projects:\n${projects.join('\n')}\n`,
+        `Found ${projects.length} affected projects:\n${projects.join('\n')}`,
       );
       resolve('Completed');
     }),

@@ -8,7 +8,7 @@ import * as nxUtils from './nx';
 export async function run(): Promise<void> {
   try {
     const project: string = core.getInput('project');
-    const base: string = core.getInput('base');
+    const base: string = core.getInput('base') ?? 'origin/main';
 
     core.startGroup('Input parameters');
     core.info(`Project: '${project}'`);
@@ -22,7 +22,6 @@ export async function run(): Promise<void> {
 
     core.startGroup('Getting affected projects');
     const affectedProjects = await nxUtils.getAffectedNxProjects(path, base);
-    core.info(`Affected projects: ${affectedProjects.join(', ')}`);
     core.endGroup();
 
     const isAffected = affectedProjects.includes(project);
