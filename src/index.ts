@@ -11,8 +11,8 @@ export async function run(): Promise<void> {
     const base: string = core.getInput('base');
 
     core.startGroup('Input parameters');
-    core.info(`Project: ${project}`);
-    core.info(`Base:    ${base}`);
+    core.info(`Project: '${project}'`);
+    core.info(`Base:    '${base}'`);
     core.endGroup();
 
     core.startGroup('Getting Nx project info');
@@ -32,8 +32,8 @@ export async function run(): Promise<void> {
     core.info(message);
 
     core.startGroup('Setting output variables');
-    core.info(`is-affected:       ${isAffected}`);
-    core.info(`affected-projects: ${affectedProjects.join(',')}`);
+    core.info(`is-affected:       '${isAffected}'`);
+    core.info(`affected-projects: '${affectedProjects.join(',')}'`);
     core.setOutput('is-affected', isAffected);
     core.setOutput('affected-projects', affectedProjects.join(','));
     core.endGroup();
