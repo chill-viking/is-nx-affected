@@ -2,10 +2,7 @@
 
 ![CI](https://github.com/chill-viking/is-nx-affected/actions/workflows/ci.yml/badge.svg)
 
-> This action is currently a work in progress, please come back soon.
-
-<!--
-Ahoy, fellow Viking of Code! 🛡️
+--
 
 Introducing the `chill-viking/is-nx-affected` GitHub Action, your trusty companion on the quest to conquer Nx monorepos! 🏰
 
@@ -15,7 +12,7 @@ This action is your treasure map to determine whether a specific `project` in yo
 compared to a chosen `base` branch or tag. And guess what?
 The default `base` is set to `'main'` because, well, it's the main course of our adventure! 🍖
 
-### How to Unleash the Viking Power
+### Usage
 
 To summon this mighty action in your GitHub workflow, follow these steps:
 
@@ -33,22 +30,15 @@ To summon this mighty action in your GitHub workflow, follow these steps:
 | `is-affected`       | `'true'` if the project has been affected, `'false'` otherwise.          |
 | `affected-projects` | A comma-separated list of affected projects. Empty if none are affected. |
 
- ```yaml
- jobs:
-   build:
-   runs-on: ubuntu-latest
-   steps:
-     - name: 'Has my-nx-project been affected?'
-       uses: chill-viking/is-nx-affected@v1
-       with:
-         project: 'my-nx-project'
-         base: 'develop'
+```yaml
+name: 'Has my-nx-project been affected?'
+uses: chill-viking/is-nx-affected@v1
+with:
+ project: 'my-nx-project'
+ base: 'main'
+```
 
-     - name: 'Release my-nx-project'
-       if: steps.is-nx-affected.outputs.is-affected == 'true' # Only run if the project has been affected
-       run: |
-         echo 'Releasing my-nx-project...'
- ```
+Make sure to check out the [examples](./EXAMPLES.md) for more inspiration!
 
 ### License to Sail the Code Sea
 
