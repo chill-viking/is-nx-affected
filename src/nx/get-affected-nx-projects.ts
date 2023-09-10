@@ -32,7 +32,7 @@ ${stdout}
 
       projects.push(...stdout.split('\n').filter((p) => p));
       core.info(
-        `Found ${projects.length} affected projects:\n${projects.join('\n')}\n`,
+        `Found ${projects.length} affected projects:\n${projects.join('\n')}`,
       );
       resolve('Completed');
     }),

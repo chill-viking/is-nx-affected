@@ -22,7 +22,6 @@ export async function run(): Promise<void> {
 
     core.startGroup('Getting affected projects');
     const affectedProjects = await nxUtils.getAffectedNxProjects(path, base);
-    core.info(`Affected projects: ${affectedProjects.join(', ')}`);
     core.endGroup();
 
     const isAffected = affectedProjects.includes(project);
