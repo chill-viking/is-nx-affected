@@ -4,51 +4,45 @@
 
 --
 
-Introducing the `chill-viking/is-nx-affected` GitHub Action, your trusty companion on the quest to conquer Nx monorepos! 🏰
+Welcome to the `chill-viking/is-nx-affected` GitHub Action!
 
-### What's the Scoop?
+### Overview
 
-This action is your treasure map to determine whether a specific `project` in your Nx monorepo is affected by changes in the current branch,
-compared to a chosen `base` branch or tag. And guess what?
-The default `base` is set to `'main'` because, well, it's the main course of our adventure! 🍖
+This action checks if a specified project in your Nx monorepo is affected by changes in the current branch compared to a chosen base branch or tag. The default base is 'origin/main'.
 
 ### Usage
 
-To summon this mighty action in your GitHub workflow, follow these steps:
+```yaml
+name: 'Has my-nx-project been affected?'
+uses: chill-viking/is-nx-affected@v1
+with:
+  project: 'my-nx-project'
+  base: 'my-release-tag'
+```
 
-**Inputs**: Craft your spell in the workflow YAML with these enchanting inputs:
+#### Inputs
 
-| Name      | Required | Description                                                      |
-|-----------|----------|------------------------------------------------------------------|
-| `project` | :check:  | The Nx project name you're targeting.                            |
-| `base`    | :x:      | The base branch or tag to compare against. Defaults to `'main'`. |
+| Name      | Required | Description                                                             |
+|-----------|----------|-------------------------------------------------------------------------|
+| `project` | :check:  | The Nx project name you're targeting.                                   |
+| `base`    | :x:      | The base branch or tag to compare against. Defaults to `'origin/main'`. |
 
-**Outputs**: The action will cast a spell and set these outputs:
+#### Outputs
 
 | Name                | Description                                                              |
 |---------------------|--------------------------------------------------------------------------|
 | `is-affected`       | `'true'` if the project has been affected, `'false'` otherwise.          |
 | `affected-projects` | A comma-separated list of affected projects. Empty if none are affected. |
 
-```yaml
-name: 'Has my-nx-project been affected?'
-uses: chill-viking/is-nx-affected@v1
-with:
- project: 'my-nx-project'
- base: 'main'
-```
+Make sure to check out the [examples](EXAMPLES) for more detailed workflow.
 
-Make sure to check out the [examples](./EXAMPLES.md) for more inspiration!
+### License
 
-### License to Sail the Code Sea
+This action is provided under the MIT License. See the [LICENSE](LICENSE) for more details.
 
-This GitHub Action is all about freedom! It sails under the MIT License flag. Dive into the [LICENSE](LICENSE) scroll for all the nitty-gritty details.
+### Contributing
 
-### Join the Viking Crew
-
-Contributions? Sure, why not! Although we're not actively recruiting shipmates at the moment, feel free to use this action, modify it, and maybe, just maybe, you'll become a legendary Viking coder in your own right! ⚔️
-
--->
+While this action is currently very simple, I'm open to suggestions for improvements. Feel free to open an issue or a pull request.
 
 ### Contributors
 
