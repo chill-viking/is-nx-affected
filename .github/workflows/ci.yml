@@ -83,9 +83,6 @@ jobs:
         uses: ./
         with:
           project: 'test-project'
-          base: 'origin/main'
-        env:
-          ACTIONS_STEP_DEBUG: true
 
       - name: Print Output
         id: output
