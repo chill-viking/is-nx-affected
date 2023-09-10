@@ -22,10 +22,10 @@ with:
 
 #### Inputs
 
-| Name      | Required | Description                                                             |
-|-----------|----------|-------------------------------------------------------------------------|
-| `project` | :check:  | The Nx project name you're targeting.                                   |
-| `base`    | :x:      | The base branch or tag to compare against. Defaults to `'origin/main'`. |
+| Name      | Required           | Description                                                             |
+|-----------|--------------------|-------------------------------------------------------------------------|
+| `project` | :white_check_mark: | The Nx project name you're targeting.                                   |
+| `base`    | :x:                | The base branch or tag to compare against. Defaults to `'origin/main'`. |
 
 #### Outputs
 
