@@ -34,7 +34,7 @@ with:
 | `is-affected`       | `'true'` if the project has been affected, `'false'` otherwise.          |
 | `affected-projects` | A comma-separated list of affected projects. Empty if none are affected. |
 
-Make sure to check out the [examples](EXAMPLES) for more detailed workflow.
+Make sure to check out the [examples](EXAMPLES.md) for more detailed workflow.
 
 ### License
 
