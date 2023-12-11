@@ -4,6 +4,10 @@
 
 --
 
+## Archived
+
+This repository has been made as read-only. Not really as useful as I thought it would be, although keeping around as a sort of snippet.
+
 Welcome to the `chill-viking/is-nx-affected` GitHub Action!
 
 ### Overview
